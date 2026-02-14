@@ -860,6 +860,9 @@ def main():
     parser.add_argument("--batch-size", type=int, default=16)
     parser.add_argument("--resume", action="store_true", help="Resume from checkpoint")
     parser.add_argument(
+        "--list-models", action="store_true", help="List available models and exit"
+    )
+    parser.add_argument(
         "--num-gpus",
         type=int,
         default=None,
@@ -872,6 +875,11 @@ def main():
         help="Comma-separated GPU IDs to use, e.g. '0,2,3' (overrides --num-gpus)",
     )
     args = parser.parse_args()
+
+    if args.list_models:
+        for name, desc in MODELS.items():
+            print(f"{name}  ({desc})")
+        return
 
     task_prompt = DETAIL_LEVELS[args.detail]
 

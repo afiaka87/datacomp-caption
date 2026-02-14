@@ -858,6 +858,14 @@ class TestOverwriteGuard:
                         cd.main()
                         mock_input.assert_not_called()
 
+    def test_list_models(self, capsys):
+        """--list-models should print models and exit."""
+        with patch("sys.argv", ["prog", "--list-models"]):
+            cd.main()
+        output = capsys.readouterr().out
+        assert "Florence-2-base" in output
+        assert "Florence-2-large" in output
+
     @patch("caption_dataset.get_gpu_devices", return_value=["cuda:0"])
     def test_no_guard_when_no_existing_files(self, mock_gpus):
         """Fresh start with no existing output should not prompt."""
