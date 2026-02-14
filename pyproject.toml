@@ -1,0 +1,23 @@
+[project]
+name = "datacomp-caption"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13"
+dependencies = [
+    "accelerate>=1.12.0",
+    "pillow>=12.1.1",
+    "pyyaml>=6.0.3",
+    "torch>=2.10.0",
+    "tqdm>=4.67.3",
+    "transformers>=5.1.0",
+    "webdataset>=1.0.2",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.19.1",
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.15.1",
+    "types-tqdm>=4.67.3.20260205",
+]
